@@ -1,4 +1,16 @@
-# Sistema Embarcado para Monitoramento da Esteira  
+<table>
+  <tr>
+    <td>
+      <img src="assets/logo.jpeg" alt="Logo do Projeto" width="150">
+    </td>
+    <td>
+      <h1>💡 Sistema Embarcado para Monitoramento da Esteira </h1>
+    </td>
+  </tr>
+</table>
+
+
+
 **Autor:** Otiliano Rodrigues de Souza Junior  
 **Data:** 26/02/2025
 
@@ -105,10 +117,21 @@ Para baixar o código e iniciar o desenvolvimento:
   ![wokwi](assets/wokwi.png)
 
 - **Demonstração Real:**  
-  Confira a prévia do display OLED e da matriz de LEDs durante a operação na BitDogLab.  
+  Confira a prévia do display OLED e da matriz de LEDs durante a operação na BitDogLab, [vídeo](https://drive.google.com/drive/folders/1kRuxR5OX1Ikjl-Q9tCTuqjdFFuxtPNQY).  
    ![placa](assets/placa.gif)
 
 ---
+## 📁 Entregáveis
+
+- **Código-Fonte:**  
+  Todo o código fonte deste projeto encontra-se neste repositório.
+
+- **vídeo Ensaio:**  
+  [Link para o Vídeo](https://drive.google.com/drive/folders/1kRuxR5OX1Ikjl-Q9tCTuqjdFFuxtPNQY)
+
+- **Relatório Completo:**  
+  [Link para o Documento](https://docs.google.com/document/d/11jMEasb0TE-p_USpGYFvF3HtJ2VkPhx13ZEOz7g1GBo/edit?tab=t.0#heading=h.2fznn6w8rfeg)
+
 
 ## Melhorias Futuras
 
@@ -121,6 +144,6 @@ Para baixar o código e iniciar o desenvolvimento:
 
 ## Referências
 
-Este projeto foi inspirado em implementações anteriores e adaptações realizadas por projetos como o BitDogLab-C, adaptando as funcionalidades para simulação de esteiras e controle embarcado.
+Este projeto foi inspirado em implementações anteriores e adaptações realizadas por projetos como o [BitDogLab](https://github.com/BitDogLab/BitDogLab), adaptando as funcionalidades para simulação de esteiras e controle embarcado.
 
 ---
