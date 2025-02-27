@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = '../build/embarcatech_esteira.uf2'
+elf = '../embarcatech_esteira.elf'

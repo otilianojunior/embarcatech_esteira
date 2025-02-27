@@ -1,0 +1,6 @@
+build
+.vscode
+pico_sdk_import.cmake
+output
+generated
+ws2812.pio
