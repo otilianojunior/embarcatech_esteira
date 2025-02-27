@@ -87,7 +87,7 @@ Para baixar o código e iniciar o desenvolvimento:
 1. **Clonando o Repositório:**
 
    ```bash
-   git clone https://github.com/seu_usuario/esteira-monitor.git
+   git clone https://github.com/otilianojunior/embarcatech_esteira.git
    cd esteira-monitor
    ```
 
@@ -106,7 +106,7 @@ Para baixar o código e iniciar o desenvolvimento:
 
 - **Demonstração Real:**  
   Confira a prévia do display OLED e da matriz de LEDs durante a operação na BitDogLab.  
-  *(Inserir links ou imagens da demonstração)*
+   ![placa](assets/placa.gif)
 
 ---
 
