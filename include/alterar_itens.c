@@ -1,7 +1,7 @@
-#include "alterar_itens.h"  // ou renomeie para alterar_itens.h se preferir
+#include "alterar_itens.h"
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
-#include "simulador_esteira.h"  // Para acessar a variável 'numero_blocos'
+#include "simulador_esteira.h"
 #include <stdio.h>
 
 #define BOTAO_A_GPIO 5
@@ -14,6 +14,7 @@
 static int direcao = 1;
 static absolute_time_t ultimo_tempo_botao_a = {0};
 
+// Callback para tratar a interrupção do botão A
 void callback_botao_a(uint32_t gpio, uint32_t events) {
     absolute_time_t agora = get_absolute_time();
     if (absolute_time_diff_us(ultimo_tempo_botao_a, agora) < DEBOUNCE_DELAY_MS * 1000)
@@ -40,11 +41,11 @@ void callback_botao_a(uint32_t gpio, uint32_t events) {
     printf("Botão A pressionado. Número de blocos: %d\n", numero_blocos);
 }
 
+// Inicializa o botão A e configura a interrupção
 void iniciar_alterar_itens(void) {
     gpio_init(BOTAO_A_GPIO);
     gpio_set_dir(BOTAO_A_GPIO, GPIO_IN);
     gpio_pull_up(BOTAO_A_GPIO);
     // Registra o callback para a interrupção do botão A
     gpio_set_irq_enabled_with_callback(BOTAO_A_GPIO, GPIO_IRQ_EDGE_FALL, true, (gpio_irq_callback_t) callback_botao_a);
-
 }

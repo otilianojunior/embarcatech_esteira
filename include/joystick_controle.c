@@ -2,7 +2,7 @@
 #include "pico/stdlib.h"
 #include "hardware/adc.h"
 #include "hardware/gpio.h"
-#include "simulador_esteira.h"  // Para acessar as variáveis globais, incluindo "velocidade" e "manutencao"
+#include "simulador_esteira.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -22,6 +22,7 @@
 static absolute_time_t ultimo_tempo_adc = {0};
 static absolute_time_t ultimo_tempo_botao = {0};
 
+// Inicializa o joystick e o botão associado
 void iniciar_joystick_controle(void) {
     adc_init();
     adc_gpio_init(PINO_Y_JOYSTICK);
@@ -31,6 +32,7 @@ void iniciar_joystick_controle(void) {
     gpio_pull_up(BOTAO_JOYSTICK);
 }
 
+// Atualiza a velocidade da esteira com base na posição do joystick
 void atualizar_velocidade_joystick(void) {
     // Não altera a velocidade se a esteira estiver em manutenção
     if (manutencao) return;
@@ -54,6 +56,7 @@ void atualizar_velocidade_joystick(void) {
     }
 }
 
+// Processa o botão do joystick para alternar o estado de manutenção
 void processar_botao_joystick(void) {
     absolute_time_t agora = get_absolute_time();
     if (absolute_time_diff_us(ultimo_tempo_botao, agora) < 200 * 1000)

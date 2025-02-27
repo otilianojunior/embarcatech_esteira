@@ -40,19 +40,99 @@ typedef struct {
    uint8_t buffer_porta[2];
 } tela_t;
 
-// Protótipos das funções do display
+// Inicializa o display
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - largura: largura do display em pixels
+// - altura: altura do display em pixels
+// - vcc_externo: true se o display usa VCC externo, false caso contrário
+// - endereco: endereço I2C do display
+// - porta_i2c: instância da porta I2C
 void inicializar_tela(tela_t *tela, uint8_t largura, uint8_t altura, bool vcc_externo, uint8_t endereco, i2c_inst_t *porta_i2c);
+
+// Configura o display com os comandos necessários
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
 void configurar_tela(tela_t *tela);
+
+// Envia um comando ao display
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - comando: comando a ser enviado
 void enviar_comando_tela(tela_t *tela, uint8_t comando);
+
+// Envia os dados do buffer para o display
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
 void enviar_dados_tela(tela_t *tela);
 
+// Desenha um pixel no display
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - x: coordenada x do pixel
+// - y: coordenada y do pixel
+// - valor: true para acender o pixel, false para apagar
 void desenhar_pixel(tela_t *tela, uint8_t x, uint8_t y, bool valor);
+
+// Preenche todo o display com um valor
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - valor: true para acender todos os pixels, false para apagar
 void preencher_tela(tela_t *tela, bool valor);
+
+// Desenha um retângulo (opcionalmente preenchido)
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - topo: coordenada y do topo do retângulo
+// - esquerda: coordenada x da esquerda do retângulo
+// - largura: largura do retângulo
+// - altura: altura do retângulo
+// - valor: true para acender os pixels, false para apagar
+// - preenche: true para preencher o retângulo, false para desenhar apenas as bordas
 void desenhar_retangulo(tela_t *tela, uint8_t topo, uint8_t esquerda, uint8_t largura, uint8_t altura, bool valor, bool preencher);
+
+// Desenha uma linha usando o algoritmo de Bresenham
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - x0: coordenada x do ponto inicial
+// - y0: coordenada y do ponto inicial
+// - x1: coordenada x do ponto final
+// - y1: coordenada y do ponto final
+// - valor: true para acender os pixels, false para apagar
 void desenhar_linha(tela_t *tela, uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, bool valor);
+
+// Desenha uma linha horizontal
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - x0: coordenada x inicial
+// - x1: coordenada x final
+// - y: coordenada y da linha
+// - valor: true para acender os pixels, false para apagar
 void desenhar_linha_horizontal(tela_t *tela, uint8_t x0, uint8_t x1, uint8_t y, bool valor);
+
+// Desenha uma linha vertical
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - x: coordenada x da linha
+// - y0: coordenada y inicial
+// - y1: coordenada y final
+// - valor: true para acender os pixels, false para apagar
 void desenhar_linha_vertical(tela_t *tela, uint8_t x, uint8_t y0, uint8_t y1, bool valor);
+
+// Desenha um caractere (8x8) utilizando a fonte
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - c: caractere a ser desenhado
+// - x: coordenada x do caractere
+// - y: coordenada y do caractere
 void desenhar_caractere(tela_t *tela, char c, uint8_t x, uint8_t y);
+
+// Desenha uma string no display
+// Parâmetros:
+// - tela: ponteiro para a estrutura do display
+// - texto: string a ser desenhada
+// - x: coordenada x inicial
+// - y: coordenada y inicial
 void desenhar_texto(tela_t *tela, const char *texto, uint8_t x, uint8_t y);
 
 #endif

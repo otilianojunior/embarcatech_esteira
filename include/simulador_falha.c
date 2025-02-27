@@ -1,7 +1,7 @@
 #include "simulador_falha.h"
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
-#include "matriz_leds.h"  // Biblioteca para controle da matriz de LEDs
+#include "matriz_leds.h"
 
 // Definições dos pinos
 #define BOTAO_B      6
@@ -20,6 +20,7 @@
 
 // Note que não definimos a variável "falha" aqui, pois ela já é definida em simulador_esteira.c
 
+// Inicializa o simulador de falha
 void inicializar_simulador_falha(void) {
     // Configura o botão B (entrada com pull-up)
     gpio_init(BOTAO_B);
@@ -37,6 +38,7 @@ void inicializar_simulador_falha(void) {
     escrever_leds();
 }
 
+// Toca um tom nos buzzers
 void tocar_tom(uint frequencia, uint duracao_ms) {
     uint periodo_us = 1000000 / frequencia;
     uint meio_periodo_us = periodo_us / 2;
@@ -53,6 +55,7 @@ void tocar_tom(uint frequencia, uint duracao_ms) {
     }
 }
 
+// Pisca a matriz de LEDs na cor vermelha
 void piscar_matriz_vermelha(uint duracao_ms) {
     // Define todos os LEDs da matriz para vermelho com 10% de intensidade
     for (uint i = 0; i < NUM_LEDS_MTX; i++) {
@@ -71,6 +74,7 @@ void piscar_matriz_vermelha(uint duracao_ms) {
     escrever_leds();
 }
 
+// Executa o alarme de falha
 void executar_alarme_falha(void) {
     for (int i = 0; i < 3; i++) {
         if (!falha) break;
@@ -84,6 +88,7 @@ void executar_alarme_falha(void) {
     sleep_ms(PAUSA_ENTRE_CICLOS_MS);
 }
 
+// Verifica o estado do botão de falha
 void verificar_falha(void) {
     if (gpio_get(BOTAO_B) == 0) {
         sleep_ms(50);  // Debounce
