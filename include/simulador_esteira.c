@@ -18,6 +18,7 @@ bool esta_manutencao(void) {
     return manutencao;
 }
 
+// Função principal para simular a esteira
 void simular_esteira() {
     // Inicializa o I2C no i2c1 com 400 kHz
     i2c_init(i2c1, 400000);
@@ -97,12 +98,13 @@ void simular_esteira() {
                 pos_x_item = pos_x_item % (LARGURA - block_width);
             }
             for (int dx = 0; dx < block_width; dx++) {
-                for (int dy = 0; dy < block_height; dy++) {
+                for (int dy = 0; dx < block_height; dy++) {
                     desenhar_pixel(&tela, pos_x_item + dx, item_y + dy, true);
                 }
             }
         }
 
+        // Envia os dados para o display
         enviar_dados_tela(&tela);
         sleep_ms(update_interval);
     }

@@ -15,7 +15,12 @@ extern volatile bool manutencao;
 extern volatile int numero_blocos;
 
 // Protótipos de funções
+
+// Retorna o estado atual de manutenção
+// Retorna: true se a esteira estiver em manutenção, false caso contrário
 bool esta_manutencao(void);
+
+// Função principal para simular a esteira
 void simular_esteira(void);
 
 #ifdef __cplusplus

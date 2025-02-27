@@ -1,7 +1,7 @@
 #include "matriz_leds.h"
 #include <string.h>
 #include "hardware/pio.h"
-#include "ws2812.pio.h"  // Se estiver usando o programa ws2812 para LED
+#include "ws2812.pio.h"
 
 // Definição do buffer de LEDs
 led_t matriz_leds[NUM_LEDS_MTX];
@@ -25,6 +25,7 @@ void inicializar_matriz_leds(uint pino) {
     escrever_leds();
 }
 
+// Define a cor de um LED específico na matriz
 void definir_led(uint id, uint8_t R, uint8_t G, uint8_t B) {
     if(id < NUM_LEDS_MTX) {
         matriz_leds[id].R = R;
@@ -33,6 +34,7 @@ void definir_led(uint id, uint8_t R, uint8_t G, uint8_t B) {
     }
 }
 
+// Limpa todos os LEDs da matriz (desliga todos)
 void limpar_leds(void) {
     for (uint i = 0; i < NUM_LEDS_MTX; i++) {
         matriz_leds[i].R = 0;
@@ -46,6 +48,7 @@ uint32_t valor_rgb(uint8_t B, uint8_t R, uint8_t G) {
     return (G << 24) | (R << 16) | (B << 8);
 }
 
+// Escreve os valores dos LEDs na matriz
 void escrever_leds(void) {
     uint32_t valor;
     for (uint i = 0; i < NUM_LEDS_MTX; ++i) {
@@ -54,6 +57,7 @@ void escrever_leds(void) {
     }
 }
 
+// Define os LEDs da matriz com base em um padrão 5x5
 void definir_led_por_padrao(const uint8_t padrao[5][5]) {
     uint8_t nivel = NIVEL_LED_MTX;
     int idx = 0;
